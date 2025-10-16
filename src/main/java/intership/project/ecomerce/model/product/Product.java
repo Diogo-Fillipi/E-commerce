@@ -1,16 +1,13 @@
-package intership.project.ecomerce.model.user;
+package intership.project.ecomerce.model.product;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class User {
-
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,12 +16,9 @@ public class User {
     private String name;
 
     @Column(nullable = false)
-    private String email;
+    private String description;
 
     @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private UserType userType;
+    private String category;
 
 }
