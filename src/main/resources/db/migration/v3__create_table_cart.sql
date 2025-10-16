@@ -1,0 +1,6 @@
+CREATE TABLE cart(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT UNIQUE
+    CONSTRAINT fk_cart_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+
+);
