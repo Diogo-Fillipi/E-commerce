@@ -16,7 +16,7 @@ public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    Long cartId;
 
     @OneToOne(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     User user;

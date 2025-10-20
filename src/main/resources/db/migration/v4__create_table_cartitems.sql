@@ -1,5 +1,5 @@
 CREATE TABLE cart_item(
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    cartItemId INT PRIMARY KEY AUTO_INCREMENT,
     product_id INT NOT NULL,
     quantity INT NOT NULL,
     cart_id INT,
