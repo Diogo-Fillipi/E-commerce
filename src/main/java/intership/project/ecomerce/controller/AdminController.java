@@ -2,6 +2,8 @@ package intership.project.ecomerce.controller;
 
 import intership.project.ecomerce.dto.ProductDTO;
 import intership.project.ecomerce.dto.UserDTO;
+import intership.project.ecomerce.model.product.Product;
+import intership.project.ecomerce.model.user.User;
 import intership.project.ecomerce.repository.product.ProductRepository;
 import intership.project.ecomerce.repository.user.UserRepository;
 import intership.project.ecomerce.service.AdminService;
@@ -9,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/admin")
@@ -28,32 +33,31 @@ public class AdminController {
 
     @PostMapping("/createuser")
     public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO) {
-        return null;
+        return adminService.createUser(userDTO);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<?> searchProduct(@RequestParam String productName) {
-        return null;
+    @GetMapping("/search/{name}")
+    public Optional<User> searchUserByName(@PathVariable String name) {
+        return adminService.searchUserByName(name);
     }
 
     @GetMapping("/search/{id}")
-    public ResponseEntity<?> searchProductById(@RequestParam Long productId) {
-        return null;
+    public Optional<User> searchUserByName(@PathVariable Long id) {
+        return adminService.searchUserById(id);
     }
 
-    @GetMapping("/searchall")
-    public ResponseEntity<?> searchAllProduct() {
-        return null;
+    @GetMapping("/search/{name}")
+    public Optional<Product> searchProductByName(@PathVariable String name) {
+        return adminService.searchProductByName(name);
+    }
+    @GetMapping("/search/{id}")
+    public Optional<Product> productDetails(@PathVariable Long productId) {
+        return adminService.searchProductById(productId);
     }
 
     @GetMapping("/products")
-    public ResponseEntity<?> listProducts() {
-        return null;
-    }
-
-    @GetMapping("/productdetails")
-    public ResponseEntity<?> listProductDetails(@RequestParam Long productId) {
-        return null;
+    public List<Product> listProducts(@RequestParam(defaultValue = "0") int offset, @RequestParam(defaultValue = "20") int limit) {
+        return adminService.listProducts(offset, limit);
     }
 
 }

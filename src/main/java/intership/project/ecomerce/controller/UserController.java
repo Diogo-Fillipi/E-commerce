@@ -32,16 +32,6 @@ public class UserController {
         return null;
     }
 
-    @GetMapping("/search/{id}")
-    public ResponseEntity<?> searchProductById(@RequestParam Long productId) {
-        return null;
-    }
-
-    @GetMapping("/searchall")
-    public ResponseEntity<?> searchAllProduct() {
-        return null;
-    }
-
     @GetMapping("/products")
     public ResponseEntity<?> listProducts() {
         return new ResponseEntity<>(productRepository.findAll(), HttpStatus.OK);
