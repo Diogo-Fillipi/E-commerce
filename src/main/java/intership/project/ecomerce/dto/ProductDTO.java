@@ -5,6 +5,7 @@ public record ProductDTO(
         String description,
         String price,
         int storage,
-        String category
+        String category,
+        String imageURL
 ) {
 }
