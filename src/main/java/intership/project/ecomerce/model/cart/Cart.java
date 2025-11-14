@@ -1,5 +1,6 @@
 package intership.project.ecomerce.model.cart;
 
+import intership.project.ecomerce.model.order.Order;
 import intership.project.ecomerce.model.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -23,4 +24,7 @@ public class Cart {
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> items = new ArrayList<>();
+
+    @OneToOne(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Order order;
 }

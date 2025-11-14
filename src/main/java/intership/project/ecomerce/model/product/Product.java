@@ -22,4 +22,7 @@ public class Product {
     @Column(nullable = false)
     private String category;
 
+    @Column
+    private String imageURL;
+
 }
