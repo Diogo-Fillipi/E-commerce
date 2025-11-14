@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -24,5 +26,8 @@ public class Product {
 
     @Column
     private String imageURL;
+
+    @Column
+    private BigDecimal price;
 
 }
