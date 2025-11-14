@@ -3,5 +3,6 @@ CREATE TABLE products(
     namee VARCHAR(255) NOT NULL UNIQUE,
     description TEXT,
     category VARCHAR(255),
-    imageURL VARCHAR(255)
+    imageURL VARCHAR(255),
+    product_price FLOAT
 );
