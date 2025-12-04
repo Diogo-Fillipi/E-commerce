@@ -2,13 +2,14 @@ package intership.project.ecomerce.controller;
 
 import intership.project.ecomerce.dto.CartItemDTO;
 import intership.project.ecomerce.service.CartService;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/api/cart")
 public class CartController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class CartController {
     }
 
     @PostMapping("/buy")
-    public ResponseEntity<?> addItemToCart(@PathVariable Long userId, @PathVariable Long productId, @PathVariable int quantity) {
+    public ResponseEntity<?> addItemToCart(@PathVariable Long userId, @PathVariable Long productId, @PathVariable @Min(1) int quantity) {
         return new ResponseEntity<>(cartService.addItemToCart(userId, productId, quantity), HttpStatus.CREATED);
     }
 

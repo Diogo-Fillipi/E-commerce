@@ -84,7 +84,7 @@ public class AdminService {
     }
 
     public Optional<User> searchUserByName(String userName) {
-        Optional<User> optionalUser = userRepository.searchUserByNamee(userName);
+        Optional<User> optionalUser = userRepository.searchUserByName(userName);
         if(optionalUser.isPresent()){
             return optionalUser;
         }
