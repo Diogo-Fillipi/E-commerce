@@ -7,35 +7,37 @@ import intership.project.ecomerce.model.order.Order;
 import intership.project.ecomerce.model.product.Product;
 import intership.project.ecomerce.repository.product.ProductRepository;
 import intership.project.ecomerce.repository.user.UserRepository;
+import intership.project.ecomerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.EntityResponse;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
-    @Autowired
-    UserRepository userRepository;
 
     @Autowired
-    ProductRepository productRepository;
+    private UserService userService;
 
-    UserController(UserRepository userRepository, ProductRepository productRepository) {
-        this.userRepository = userRepository;
-        this.productRepository = productRepository;
+    UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+
+    @GetMapping("/products")
+    public List<Product> listProducts(@RequestParam(defaultValue = "0") int offset, @RequestParam(defaultValue = "20") int limit) {
+        return userService.listProducts(offset, limit);
     }
 
     @GetMapping("/search")
-    public ResponseEntity<?> searchProduct(@RequestParam String productName) {
-        return null;
+    public ResponseEntity<?> searchProductByName(@RequestParam String productName) {
+        return new ResponseEntity<>(userService.getProductByName(productName), HttpStatus.OK);
     }
 
-    @GetMapping("/products")
-    public ResponseEntity<?> listProducts() {
-        return new ResponseEntity<>(productRepository.findAll(), HttpStatus.OK);
-    }
 
     @GetMapping("/productdetails")
     public ResponseEntity<?> listProductDetails(@RequestParam Long productId) {

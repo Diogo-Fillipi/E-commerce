@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/signup")
-public class SignUpController {
+@RequestMapping("/api/signin")
+public class SignInController {
 
-    @PostMapping("/create")
-    public ResponseEntity<?> createUser(@RequestBody User user){
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
         return null;
     }
-
 
 }
